@@ -34,24 +34,24 @@ async def getMessagesFromGroup(client, group_id):
         return []
 async def logUserBot():
     load_dotenv()
-    api_id = int(25050148)
-    api_hash = "23a59107ce8278c4cd1fad2135ef4ce1"
-    phone_number = "51934106280"
+    api_id = int(11889026)
+    api_hash = "adffde0badb34bceea136436ba35f683"
+    phone_number = "51913986798"
     session_name = "bot_spammer"
     client = TelegramClient(session_name, api_id, api_hash)
     await client.connect()
     if not await client.is_user_authorized():
         await client.send_code_request(phone_number)
         await client.sign_in(phone_number, input('Ingrese el código de verificación: '))
-    await client.send_message("@spmpatricio", f'<b>Bot encendido</b>', parse_mode="HTML")
-    spammer_group = int("-4540758917")
+    await client.send_message("@spmpatricio2", f'<b>Bot encendido</b>', parse_mode="HTML")
+    spammer_group = int("-4503018926")
 
     while True:
         groups_info = await getListOfGroups(client)
         messages_list = await getMessagesFromGroup(client, spammer_group)
             
         try:
-            await client.send_message("@spmpatricio", f"<b>CANTIDAD DE MENSAJES CONSEGUIDOS PARA PUBLICAR</b> <code>{len(messages_list)-1}</code>",parse_mode="HTML")
+            await client.send_message("@spmpatricio2", f"<b>CANTIDAD DE MENSAJES CONSEGUIDOS PARA PUBLICAR</b> <code>{len(messages_list)-1}</code>",parse_mode="HTML")
         except:
             pass
             
@@ -65,13 +65,13 @@ async def logUserBot():
                         try:
                             await client.send_message(i["group_id"], message_spam)
                         except Exception as error:
-                            await client.send_message("@spmpatricio", f'<b>Error enviando mensajes a {i["group_id"]}</b> - <code>{i["group_name"]}<code>\nCausa:{error}',parse_mode="HTML")
+                            await client.send_message("@spmpatricio2", f'<b>Error enviando mensajes a {i["group_id"]}</b> - <code>{i["group_name"]}<code>\nCausa:{error}',parse_mode="HTML")
                             resultado = False
                         if resultado:
-                            await client.send_message("@spmpatricio", f'<b>Mensaje enviado a {i["group_id"]}</b> - <code>{i["group_name"]}</code>',parse_mode="HTML")  
+                            await client.send_message("@spmpatricio2", f'<b>Mensaje enviado a {i["group_id"]}</b> - <code>{i["group_name"]}</code>',parse_mode="HTML")  
                         await asyncio.sleep(10)
                         if j==1: break
-            await client.send_message("@spmpatricio", f'<b>RONDA ACABADA</b>', parse_mode="HTML")
+            await client.send_message("@spmpatricio2", f'<b>RONDA ACABADA</b>', parse_mode="HTML")
             await asyncio.sleep(100) 
         except:
             pass
